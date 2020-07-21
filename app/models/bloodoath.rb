@@ -1,8 +1,10 @@
 class BloodOath
-    attr_accessor :date
+    attr_reader :initiation_date, :cult, :follower
     @@all=[]
-    def initialiaze
-        @date=date
+    def initialiaze(initiation_date,cult,follower)
+        @initiation_date = initiation_date
+    @cult = cult
+    @follower = follower
         @@all<<self
     end
     def initiation_date

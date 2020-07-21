@@ -1,7 +1,7 @@
 class Follower
-    attr_accessor :name, :age, :life_motto,:cult
+    attr_accessor :name, :age, :life_motto
     @@all=[]
-    def initialize
+    def initialize(name, age, life_motto)
     @name=name
     @age=age
     @life_motto=life_motto
@@ -9,10 +9,14 @@ class Follower
     @@all<<self
     end
     def cults
-        self.cult
+        arr=BloodOath.all.find{|value|
+        value.follower==self}
+        arr.each{|ele|
+        ele.cult
+        }
     end
     def join_cult(cult)
-        Cult.find_by_name(cult)<<self
+        BloodOath.new("today",cult,self)
     end
     def self.all
         @@all
